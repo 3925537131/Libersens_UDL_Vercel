@@ -1,21 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1c1d20"/>
-      <stop offset="0.55" stop-color="#3a3c42"/>
-      <stop offset="1" stop-color="#6b5141"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.7" cy="0.35" r="0.6">
-      <stop offset="0" stop-color="rgba(204,0,0,0.35)"/>
-      <stop offset="1" stop-color="rgba(204,0,0,0)"/>
-    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c1d20"/><stop offset="0.55" stop-color="#3a3c42"/><stop offset="1" stop-color="#6b5141"/></linearGradient>
+    <radialGradient id="glow" cx="0.7" cy="0.4" r="0.6"><stop offset="0" stop-color="rgba(204,0,0,0.35)"/><stop offset="1" stop-color="rgba(204,0,0,0)"/></radialGradient>
   </defs>
   <rect width="1920" height="1080" fill="url(#bg)"/>
   <rect width="1920" height="1080" fill="url(#glow)"/>
-  <circle cx="1382.3999999999999" cy="432" r="367.20000000000005" fill="rgba(255,255,255,0.04)"/>
-  <circle cx="1382.3999999999999" cy="432" r="237.6" fill="rgba(255,255,255,0.05)"/>
-  <g transform="rotate(18 1382.3999999999999 453.59999999999997)">
-    <rect x="1368.3999999999999" y="194.4" width="28" height="432" rx="14" fill="rgba(255,255,255,0.22)"/>
-    <rect x="1348.3999999999999" y="604.8000000000001" width="68" height="12" rx="6" fill="rgba(255,255,255,0.7)"/>
+  <circle cx="1382.3999999999999" cy="496.8" r="367.20000000000005" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="1382.3999999999999" cy="496.8" r="237.6" fill="rgba(255,255,255,0.05)"/>
+  <g transform="rotate(18 1382.3999999999999 496.8)">
+    <rect x="1368.3999999999999" y="237.6" width="28" height="453.59999999999997" rx="14" fill="rgba(255,255,255,0.22)"/>
+    <rect x="1348.3999999999999" y="669.6" width="68" height="12" rx="6" fill="rgba(255,255,255,0.7)"/>
   </g>
 </svg>

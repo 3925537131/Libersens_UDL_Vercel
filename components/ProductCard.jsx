@@ -5,12 +5,12 @@ const fmt = (n) =>
     n
   );
 
-export default function ProductCard({ product, feature = false }) {
+export default function ProductCard({ product, size = "small" }) {
   const price = product.priceRange?.min ?? 0;
   return (
     <Link
       href={`/products/${product.handle}`}
-      className={`work-item${feature ? " feature" : ""}`}
+      className={`work-item ${size === "large" ? "large" : "small"}`}
     >
       <div className="media">
         {product.tag && <span className="tag">{product.tag}</span>}
@@ -20,8 +20,8 @@ export default function ProductCard({ product, feature = false }) {
       </div>
       <div className="work-caption">
         <div>
-          <div className="title">{product.title}</div>
-          {product.subtitle && <div className="sub">{product.subtitle}</div>}
+          <span className="title">{product.title}</span>
+          {product.subtitle && <span className="sub">{product.subtitle}</span>}
         </div>
         <div className="price">{fmt(price)}</div>
       </div>

@@ -1,32 +1,30 @@
 "use client";
 
-const WORDS = [
-  "Clean formulas",
-  "Refillable",
-  "Carbon-neutral shipping",
-  "Cruelty-free",
-  "Designed to be kept",
-  "Made in small batches",
+const ROWS = [
+  ["Clean formulas", "Refillable", "Carbon-neutral", "Cruelty-free"],
+  ["Designed to be kept", "Small batch", "Made in detail", "No filler"],
+  ["Free your senses", "Considered", "Multi-sensory", "Less waste"],
 ];
 
+function Row({ words, cls }) {
+  const doubled = [...words, ...words];
+  return (
+    <div className={`marquee-row ${cls}`}>
+      {doubled.map((w, i) => (
+        <span key={i}>
+          {w} <b>·</b>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function Marquee() {
-  const row = [...WORDS, ...WORDS];
   return (
     <div className="marquee" aria-hidden="true">
-      <div className="marquee-row">
-        {row.map((w, i) => (
-          <span key={`a${i}`}>
-            {w} <span style={{ color: "var(--red)" }}>·</span>
-          </span>
-        ))}
-      </div>
-      <div className="marquee-row reverse">
-        {row.map((w, i) => (
-          <span key={`b${i}`}>
-            {w} <span style={{ color: "var(--red)" }}>·</span>
-          </span>
-        ))}
-      </div>
+      <Row words={ROWS[0]} cls="r1" />
+      <Row words={ROWS[1]} cls="r2" />
+      <Row words={ROWS[2]} cls="r3" />
     </div>
   );
 }

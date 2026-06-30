@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23252b"/><stop offset="1" stop-color="#34373f"/></linearGradient>
     <linearGradient id="m" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(255,255,255,0.05)"/><stop offset="0.5" stop-color="rgba(255,255,255,0.5)"/><stop offset="1" stop-color="rgba(0,0,0,0.25)"/></linearGradient>
@@ -12,13 +12,13 @@
       <stop offset="1" stop-color="rgba(0,0,0,0.16)"/>
     </linearGradient>
   </defs>
-  <rect width="1000" height="1250" fill="url(#bg)"/>
-  <circle cx="500" cy="625" r="425.00000000000006" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-  <g transform="rotate(22 500 625)">
-    <rect x="487" y="300" width="26" height="500" rx="13" fill="url(#m)"/>
-    <rect x="483" y="775" width="34" height="16" rx="5" fill="rgba(255,255,255,0.55)"/>
-    <rect x="470" y="837.5" width="60" height="11" rx="5" fill="rgba(255,255,255,0.88)"/>
-    <rect x="466" y="918.75" width="68" height="3" fill="rgba(255,255,255,0.6)"/>
+  <rect width="1400" height="1000" fill="url(#bg)"/>
+  <circle cx="700" cy="500" r="340" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <g transform="rotate(22 700 500)">
+    <rect x="687" y="240" width="26" height="400" rx="13" fill="url(#m)"/>
+    <rect x="683" y="620" width="34" height="16" rx="5" fill="rgba(255,255,255,0.55)"/>
+    <rect x="670" y="670" width="60" height="11" rx="5" fill="rgba(255,255,255,0.88)"/>
+    <rect x="666" y="735" width="68" height="3" fill="rgba(255,255,255,0.6)"/>
   </g>
-  <rect width="1000" height="1250" fill="url(#vig)"/>
+  <rect width="1400" height="1000" fill="url(#vig)"/>
 </svg>

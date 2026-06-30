@@ -31,7 +31,7 @@ function Clock({ label, timeZone }) {
 export default function Footer() {
   return (
     <>
-      <div className="foot-links block pad">
+      <div className="foot-links block">
         <Link href="/shop">Shop the range</Link>
         <Link href="/contact">Get in touch</Link>
       </div>

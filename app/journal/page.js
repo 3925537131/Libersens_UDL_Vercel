@@ -9,10 +9,10 @@ export const metadata = {
 
 // A few more entries so the journal index feels fuller than the home preview.
 const extra = [
-  { handle: "refills-not-replacements", date: "04.09.2026", headline: "Refills, not replacements", image: "/img/journal/journal-1.svg" },
-  { handle: "the-quiet-glow", date: "03.21.2026", headline: "On the quiet glow", image: "/img/journal/journal-2.svg" },
-  { handle: "small-batch-thinking", date: "03.02.2026", headline: "Why we make in small batches", image: "/img/journal/journal-3.svg" },
-  { handle: "packaging-we-keep", date: "02.14.2026", headline: "Packaging you actually keep", image: "/img/journal/journal-4.svg" },
+  { handle: "refills-not-replacements", date: "04.09.2026", headline: "Refills, not replacements", image: "/img/journal/journal-5.svg" },
+  { handle: "the-quiet-glow", date: "03.21.2026", headline: "On the quiet glow", image: "/img/journal/journal-6.svg" },
+  { handle: "small-batch-thinking", date: "03.02.2026", headline: "Why we make in small batches", image: "/img/journal/journal-7.svg" },
+  { handle: "packaging-we-keep", date: "02.14.2026", headline: "Packaging you actually keep", image: "/img/journal/journal-8.svg" },
 ];
 
 export default function Journal() {

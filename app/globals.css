@@ -1,7 +1,7 @@
 /* ==========================================================================
    Libersens — design system
-   Editorial, neo-grotesque, white/black with a red accent.
-   Inspired by the spatial rhythm of studio portfolio sites.
+   Editorial neo-grotesque, white/black with a red accent.
+   Tuned to the spatial rhythm & type of u-d-l.com (UDL Studios).
    ========================================================================== */
 
 :root {
@@ -9,6 +9,7 @@
   --white: #ffffff;
   --red: #cc0000;
   --grey: #9c9d9d;
+  --grey-mid: #979797;
   --grey-light: #e5e5e5;
   --grey-bg: #f6f6f6;
 
@@ -16,8 +17,8 @@
   --fg: var(--black);
 
   --max-width: 1920px;
-  --pad: clamp(20px, 5vw, 96px);
-  --nav-h: 76px;
+  --pad: clamp(20px, 5.2vw, 100px);
+  --nav-h: 74px;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -91,10 +92,6 @@ ul {
   padding-right: var(--pad);
 }
 
-.line-top {
-  border-top: 1px solid var(--black);
-}
-
 .eyebrow {
   font-size: 12px;
   letter-spacing: 0.14em;
@@ -102,30 +99,62 @@ ul {
   font-weight: 600;
 }
 
-/* section header rows like "SELECTED WORK" */
+/* section label rows: a hairline rule, then a small uppercase label */
 .section-head {
+  border-top: 1px solid var(--black);
+  padding: 16px 0 56px;
+  margin-top: 90px;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  border-top: 1px solid var(--black);
-  padding: 18px 0 28px;
-  margin-top: 80px;
 }
 
 .section-head h2 {
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .section-head .count {
   font-size: 12px;
   color: var(--grey);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
-/* ---------- buttons ---------- */
+/* underlined "more" text link (UDL style) */
+.more {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-bottom: 4px;
+}
+
+.more::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--grey-mid);
+  transition: background 0.3s;
+}
+
+.more:hover::after {
+  background: var(--black);
+}
+
+.more-row {
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px 0 40px;
+}
+
+/* ---------- pill buttons (CTAs) ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -154,12 +183,6 @@ ul {
 .btn-red:hover {
   background: var(--black);
   border-color: var(--black);
-}
-
-.more-row {
-  display: flex;
-  justify-content: center;
-  padding: 50px 0;
 }
 
 /* ==========================================================================
@@ -199,17 +222,17 @@ ul {
 }
 
 .logo {
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.01em;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .logo .dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: var(--red);
   border-radius: 50%;
   display: inline-block;
@@ -217,12 +240,12 @@ ul {
 
 .main-nav ul {
   display: flex;
-  gap: 36px;
+  gap: 34px;
 }
 
 .main-nav a {
   font-size: 13px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
   position: relative;
@@ -251,7 +274,7 @@ ul {
 
 .cart-btn {
   font-size: 13px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -267,7 +290,7 @@ ul {
 .burger {
   display: none;
   width: 30px;
-  height: 18px;
+  height: 16px;
   position: relative;
 }
 
@@ -288,10 +311,10 @@ ul {
 }
 
 .menu-open .burger i:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(7px) rotate(45deg);
 }
 .menu-open .burger i:nth-child(2) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ---------- full-screen overlay menu ---------- */
@@ -318,7 +341,7 @@ ul {
 .overlay-nav a {
   display: block;
   font-size: clamp(40px, 8vw, 110px);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.05;
   padding: 4px 0;
@@ -354,134 +377,41 @@ ul {
 }
 
 /* ==========================================================================
-   Hero
+   Banner (16:9 contained media, UDL-style — nav floats over it)
    ========================================================================== */
-.hero {
+.banner {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #111;
 }
 
-.hero-media {
+.banner-media,
+.banner-media img,
+.banner-media video {
   position: absolute;
   inset: 0;
-}
-
-.hero-media img,
-.hero-media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-media::after {
+.banner-media::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.05) 40%,
-    rgba(0, 0, 0, 0.45)
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.05) 30%,
+    rgba(0, 0, 0, 0.2) 100%
   );
-}
-
-.hero-content {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 7vh;
-  color: var(--white);
-}
-
-.hero-eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.hero h1 {
-  font-size: clamp(44px, 8.5vw, 160px);
-  line-height: 0.95;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  max-width: 14ch;
-}
-
-/* char-reveal animation */
-.reveal-line {
-  display: block;
-  overflow: hidden;
-}
-
-.reveal-line span {
-  display: inline-block;
-  transform: translateY(110%);
-  transition: transform 0.9s var(--ease);
-}
-
-.hero.in span {
-  transform: translateY(0);
-}
-
-.hero-sub {
-  margin-top: 26px;
-  max-width: 46ch;
-  font-size: clamp(15px, 1.4vw, 20px);
-  line-height: 1.5;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s var(--ease) 0.5s, transform 0.8s var(--ease) 0.5s;
-}
-
-.hero.in .hero-sub {
-  opacity: 0.9;
-  transform: translateY(0);
-}
-
-.hero-actions {
-  margin-top: 34px;
-  display: flex;
-  gap: 16px;
-  opacity: 0;
-  transition: opacity 0.8s var(--ease) 0.7s;
-}
-
-.hero.in .hero-actions {
-  opacity: 1;
-}
-
-.hero .btn {
-  border-color: var(--white);
-  color: var(--white);
-}
-
-.hero .btn:hover {
-  background: var(--white);
-  color: var(--black);
-}
-
-.hero .btn-red {
-  background: var(--red);
-  border-color: var(--red);
-}
-
-.hero .btn-red:hover {
-  background: var(--white);
-  border-color: var(--white);
-  color: var(--black);
 }
 
 .scroll-hint {
   position: absolute;
-  bottom: 24px;
+  bottom: 22px;
   right: var(--pad);
   z-index: 3;
   color: var(--white);
@@ -495,7 +425,7 @@ ul {
 
 .scroll-hint .bar {
   width: 1px;
-  height: 40px;
+  height: 38px;
   background: var(--white);
   animation: scrollbar 1.8s var(--ease) infinite;
   transform-origin: top;
@@ -515,64 +445,96 @@ ul {
 }
 
 /* ==========================================================================
-   Manifesto / rotating statement
+   Statement — studio name + big rotating animated line (UDL signature)
    ========================================================================== */
-.manifesto {
-  padding: 120px 0;
+.statement {
+  padding: clamp(60px, 9vw, 150px) 0 clamp(70px, 12vw, 180px);
 }
 
-.manifesto .eyebrow {
+.statement-name {
+  display: inline-block;
+  font-size: clamp(40px, 6.6vw, 124px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: clamp(20px, 3vw, 56px);
+}
+
+.statement-name .reg {
+  font-size: 0.3em;
+  vertical-align: super;
   color: var(--red);
-  margin-bottom: 30px;
-}
-
-.manifesto h2 {
-  font-size: clamp(30px, 5vw, 92px);
-  line-height: 1.02;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  max-width: 18ch;
-}
-
-.manifesto h2 em {
-  font-style: italic;
-  color: var(--grey);
 }
 
 .rotator {
-  display: inline-block;
   position: relative;
+  font-size: clamp(34px, 6vw, 112px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  min-height: 1.05em;
+}
+
+.rotator-phrase {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rotator-phrase.active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rotator-phrase .ch {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.45s linear;
+}
+
+.rotator-phrase .ch.space {
+  width: 0.28em;
+}
+
+.rotator-phrase.active .ch {
+  opacity: 1;
+}
+
+.rotator .accent {
   color: var(--red);
 }
 
 /* ==========================================================================
-   Product / "selected work" grid
+   Work grid — 2 large (2-up) + smaller items (3-up)
    ========================================================================== */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(20px, 2.2vw, 44px) clamp(14px, 1.6vw, 30px);
 }
 
 .work-item {
-  position: relative;
   display: block;
-  overflow: hidden;
+  grid-column: span 2; /* default = 3-up */
 }
 
-.work-item.feature {
-  grid-column: span 2;
+.work-item.large {
+  grid-column: span 3; /* 2-up */
 }
 
 .work-item .media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--grey-bg);
 }
 
-.work-item.feature .media {
-  aspect-ratio: 21 / 9;
+.work-item.large .media {
+  aspect-ratio: 16 / 11;
 }
 
 .work-item .media img {
@@ -583,31 +545,33 @@ ul {
 }
 
 .work-item:hover .media img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .work-caption {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 16px 4px 0;
+  padding-top: 16px;
   gap: 16px;
 }
 
 .work-caption .title {
-  font-size: clamp(16px, 1.4vw, 22px);
-  font-weight: 600;
+  font-size: clamp(16px, 1.35vw, 22px);
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 .work-caption .sub {
+  display: block;
   font-size: 13px;
   color: var(--grey);
+  margin-top: 3px;
 }
 
 .work-caption .price {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
 }
 
@@ -619,7 +583,7 @@ ul {
   background: var(--red);
   color: var(--white);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 600;
   padding: 6px 12px;
@@ -627,35 +591,53 @@ ul {
 }
 
 /* ==========================================================================
-   Marquee (brand strip)
+   Marquee — three rows at varying speed/direction (UDL logo strip)
    ========================================================================== */
 .marquee {
-  padding: 70px 0;
+  padding: clamp(50px, 7vw, 110px) 0;
   overflow: hidden;
   border-top: 1px solid var(--grey-light);
   border-bottom: 1px solid var(--grey-light);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.4vw, 26px);
 }
 
 .marquee-row {
   display: flex;
-  gap: 80px;
+  gap: 70px;
   width: max-content;
-  animation: scroll-x 30s linear infinite;
   align-items: center;
+  animation: scroll-x linear infinite;
 }
 
-.marquee-row.reverse {
+.marquee-row.r1 {
+  animation-duration: 32s;
+}
+.marquee-row.r2 {
+  animation-duration: 24s;
   animation-direction: reverse;
-  margin-top: 36px;
+}
+.marquee-row.r3 {
+  animation-duration: 40s;
 }
 
 .marquee-row span {
-  font-size: clamp(28px, 4vw, 64px);
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: clamp(28px, 4.4vw, 76px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--grey-light);
   white-space: nowrap;
   transition: color 0.3s;
+}
+
+.marquee-row.r2 span {
+  color: #efefef;
+}
+
+.marquee-row span b {
+  color: var(--red);
+  font-weight: 500;
 }
 
 .marquee-row span:hover {
@@ -672,79 +654,78 @@ ul {
 }
 
 /* ==========================================================================
-   Journal (masonry-ish news grid)
+   Journal — CSS-columns masonry (UDL news grid)
    ========================================================================== */
 .journal-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px 24px;
+  column-count: 3;
+  column-gap: clamp(20px, 2.4vw, 44px);
 }
 
 .journal-item {
-  display: block;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: clamp(30px, 3.4vw, 60px);
+  break-inside: avoid;
 }
 
 .journal-item .media {
   overflow: hidden;
   background: var(--grey-bg);
-  aspect-ratio: 3 / 4;
-}
-
-.journal-item:nth-child(4n + 2) .media {
-  aspect-ratio: 1 / 1;
-}
-.journal-item:nth-child(4n + 3) .media {
-  aspect-ratio: 4 / 5;
 }
 
 .journal-item .media img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   transition: transform 0.9s var(--ease);
 }
 
 .journal-item:hover .media img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .journal-item .date {
-  margin-top: 14px;
-  font-size: 12px;
-  color: var(--grey);
-  letter-spacing: 0.05em;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .journal-item .headline {
-  margin-top: 6px;
+  margin-top: 4px;
   font-size: 15px;
-  line-height: 1.35;
-  font-weight: 600;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #1a1a1a;
 }
 
 /* ==========================================================================
    Big footer links + footer
    ========================================================================== */
+.foot-links {
+  margin-top: 60px;
+}
+
 .foot-links a {
   display: block;
   border-top: 1px solid var(--black);
-  padding: 38px 0;
-  font-size: clamp(30px, 5vw, 84px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  transition: padding-left 0.4s var(--ease), color 0.3s;
+  padding: clamp(26px, 3vw, 48px) var(--pad);
+  font-size: clamp(30px, 5vw, 88px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  transition: background 0.4s var(--ease), color 0.3s, padding-left 0.4s var(--ease);
 }
 
 .foot-links a:hover {
-  padding-left: 24px;
-  color: var(--red);
+  background: var(--black);
+  color: var(--white);
+  padding-left: calc(var(--pad) + 24px);
 }
 
 .footer {
   background: var(--black);
   color: var(--white);
   padding: 80px 0 40px;
-  margin-top: 0;
 }
 
 .footer-top {
@@ -757,7 +738,7 @@ ul {
 
 .clocks {
   display: flex;
-  gap: 40px;
+  gap: 44px;
 }
 
 .clock .label {
@@ -769,9 +750,10 @@ ul {
 
 .clock .time {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   margin-top: 6px;
+  line-height: 1.13;
 }
 
 .footer-col h4 {
@@ -803,10 +785,10 @@ ul {
 }
 
 .footer-logo {
-  font-size: clamp(60px, 16vw, 280px);
-  font-weight: 800;
+  font-size: clamp(60px, 16vw, 290px);
+  font-weight: 600;
   line-height: 0.8;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 .footer-meta {
@@ -1025,8 +1007,8 @@ ul {
 .page-intro h1 {
   font-size: clamp(40px, 7vw, 130px);
   line-height: 0.95;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 .page-intro p {
@@ -1088,14 +1070,14 @@ ul {
 .pdp-info h1 {
   font-size: clamp(32px, 4vw, 60px);
   line-height: 1;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   margin: 14px 0 18px;
 }
 
 .pdp-price {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 24px;
 }
 
@@ -1179,7 +1161,7 @@ ul {
 .shop-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 24px;
+  gap: clamp(28px, 3vw, 56px) clamp(16px, 1.6vw, 30px);
 }
 
 /* ==========================================================================
@@ -1225,28 +1207,34 @@ ul {
 /* ==========================================================================
    Responsive
    ========================================================================== */
+@media (max-width: 1100px) {
+  .work-item.large {
+    grid-column: span 3;
+  }
+  .work-item {
+    grid-column: span 3;
+  }
+}
+
 @media (max-width: 900px) {
-  .main-nav,
-  .header-right .cart-btn {
-    display: none;
-  }
-  .header-right .cart-btn {
-    display: inline;
-  }
   .main-nav {
     display: none;
   }
   .burger {
     display: block;
   }
+  .banner {
+    aspect-ratio: 3 / 4;
+  }
   .work-grid {
     grid-template-columns: 1fr;
   }
-  .work-item.feature {
+  .work-item,
+  .work-item.large {
     grid-column: span 1;
   }
   .journal-grid {
-    grid-template-columns: repeat(2, 1fr);
+    column-count: 2;
   }
   .shop-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1269,7 +1257,9 @@ ul {
 }
 
 @media (max-width: 560px) {
-  .journal-grid,
+  .journal-grid {
+    column-count: 1;
+  }
   .shop-grid {
     grid-template-columns: 1fr;
   }

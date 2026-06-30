@@ -1,5 +1,6 @@
 import Link from "next/link";
-import Hero from "@/components/Hero";
+import Banner from "@/components/Banner";
+import Statement from "@/components/Statement";
 import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
@@ -7,42 +8,33 @@ import { getProducts } from "@/lib/shopify";
 import { mockJournal } from "@/lib/mock-data";
 
 export default async function Home() {
-  const products = await getProducts(7);
-  const [feature, ...rest] = products;
+  const products = await getProducts(8);
+  const large = products.slice(0, 2);
+  const small = products.slice(2, 5);
 
   return (
     <>
-      <Hero />
+      <Banner />
+      <Statement />
 
-      {/* Manifesto */}
-      <section className="manifesto block pad">
-        <Reveal>
-          <p className="eyebrow">Libersens — est. 2026</p>
-        </Reveal>
-        <Reveal delay={80}>
-          <h2>
-            Personal care, stripped back to what matters.{" "}
-            <em>Better tools, cleaner formulas, less waste.</em>
-          </h2>
-        </Reveal>
-      </section>
-
-      {/* Featured products */}
+      {/* Selected / featured products */}
       <section className="block pad">
         <div className="section-head">
-          <h2>Featured</h2>
+          <h2>Selected products</h2>
           <span className="count">The essentials</span>
         </div>
         <Reveal>
           <div className="work-grid">
-            {feature && <ProductCard product={feature} feature />}
-            {rest.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {large.map((p) => (
+              <ProductCard key={p.id} product={p} size="large" />
+            ))}
+            {small.map((p) => (
+              <ProductCard key={p.id} product={p} size="small" />
             ))}
           </div>
         </Reveal>
         <div className="more-row">
-          <Link href="/shop" className="btn">
+          <Link href="/shop" className="more">
             View all products
           </Link>
         </div>
@@ -52,19 +44,15 @@ export default async function Home() {
       <Marquee />
 
       {/* Journal */}
-      <section className="block pad" style={{ paddingBottom: 40 }}>
+      <section className="block pad">
         <div className="section-head">
           <h2>Journal</h2>
-          <span className="count">Notes & rituals</span>
+          <span className="count">Notes &amp; rituals</span>
         </div>
         <Reveal>
           <div className="journal-grid">
             {mockJournal.map((j) => (
-              <Link
-                key={j.handle}
-                href="/journal"
-                className="journal-item"
-              >
+              <Link key={j.handle} href="/journal" className="journal-item">
                 <div className="media">
                   <img src={j.image} alt={j.headline} />
                 </div>
@@ -75,7 +63,7 @@ export default async function Home() {
           </div>
         </Reveal>
         <div className="more-row">
-          <Link href="/journal" className="btn">
+          <Link href="/journal" className="more">
             View all journal
           </Link>
         </div>
