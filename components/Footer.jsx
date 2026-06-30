@@ -31,6 +31,14 @@ function Clock({ label, timeZone }) {
 export default function Footer() {
   return (
     <>
+      <div className="btt-bar block">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          Back to top ↑
+        </button>
+      </div>
+
       <div className="foot-links block">
         <Link href="/shop">Shop the range</Link>
         <Link href="/contact">Get in touch</Link>

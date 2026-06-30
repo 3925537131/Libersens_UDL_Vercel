@@ -23,16 +23,18 @@ export default async function Home() {
           <h2>Selected products</h2>
           <span className="count">The essentials</span>
         </div>
-        <Reveal>
-          <div className="work-grid">
-            {large.map((p) => (
-              <ProductCard key={p.id} product={p} size="large" />
-            ))}
-            {small.map((p) => (
-              <ProductCard key={p.id} product={p} size="small" />
-            ))}
-          </div>
-        </Reveal>
+        <div className="work-grid">
+          {large.map((p, i) => (
+            <Reveal key={p.id} className="cell large" delay={i * 90}>
+              <ProductCard product={p} size="large" />
+            </Reveal>
+          ))}
+          {small.map((p, i) => (
+            <Reveal key={p.id} className="cell small" delay={(i + 2) * 90}>
+              <ProductCard product={p} size="small" />
+            </Reveal>
+          ))}
+        </div>
         <div className="more-row">
           <Link href="/shop" className="more">
             View all products

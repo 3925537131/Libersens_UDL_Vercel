@@ -1,7 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1300" width="900" height="1300">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bda886"/><stop offset="1" stop-color="#a8916c"/></linearGradient></defs>
+  <defs>
+    <linearGradient id="bg" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#c2ac88"/><stop offset="1" stop-color="#a68c63"/></linearGradient>
+    <radialGradient id="light" cx="0.5" cy="0.3" r="0.8"><stop offset="0" stop-color="rgba(255,255,255,0.14)"/><stop offset="0.6" stop-color="rgba(255,255,255,0)"/></radialGradient>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" seed="27"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"/></filter>
+  </defs>
   <rect width="900" height="1300" fill="url(#bg)"/>
-  <circle cx="450" cy="572" r="234" fill="rgba(255,255,255,0.12)"/>
-  <rect x="442" y="416" width="16" height="338" rx="8" fill="rgba(255,255,255,0.5)"/>
-  <text x="450" y="1118" font-family="Archivo, Arial" font-size="108" font-weight="700" fill="rgba(255,255,255,0.5)" text-anchor="middle">06</text>
+  <rect width="900" height="1300" fill="url(#light)"/>
+  <circle cx="450" cy="572" r="216" fill="rgba(255,255,255,0.1)"/>
+  <rect x="443" y="429" width="14" height="312" rx="7" fill="rgba(255,255,255,0.42)"/>
+  <text x="54" y="1196" font-family="Archivo, Arial" font-size="76.5" font-weight="600" fill="rgba(255,255,255,0.55)">Journal — 06</text>
+  <rect width="900" height="1300" filter="url(#grain)"/>
 </svg>

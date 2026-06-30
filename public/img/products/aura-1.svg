@@ -1,24 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="1000" height="1250">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9a98a"/><stop offset="1" stop-color="#b08a64"/></linearGradient>
-    <radialGradient id="vig" cx="0.5" cy="0.44" r="0.72">
-      <stop offset="0.5" stop-color="rgba(0,0,0,0)"/>
-      <stop offset="1" stop-color="rgba(0,0,0,0.34)"/>
+    <linearGradient id="bg" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#cda985"/><stop offset="1" stop-color="#ab815a"/></linearGradient>
+    
+    <radialGradient id="light" cx="0.5" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="0.55" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.46" r="0.78">
+      <stop offset="0.46" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.4)"/>
     </radialGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="rgba(255,255,255,0.10)"/>
-      <stop offset="0.5" stop-color="rgba(255,255,255,0.40)"/>
-      <stop offset="1" stop-color="rgba(0,0,0,0.16)"/>
+      <stop offset="0" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="0.22" stop-color="rgba(255,255,255,0.42)"/>
+      <stop offset="0.5" stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="0.8" stop-color="rgba(0,0,0,0.06)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.22)"/>
     </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="0.42" stop-color="rgba(255,255,255,0.62)"/>
+      <stop offset="0.62" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.34)"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" seed="6"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
   </defs>
   <rect width="1000" height="1250" fill="url(#bg)"/>
-  <circle cx="500" cy="600" r="450" fill="rgba(255,255,255,0.05)"/>
-  <ellipse cx="500" cy="1080.75" rx="173.25" ry="36.75" fill="rgba(0,0,0,0.3)"/>
-  <rect x="368.75" y="443.75" width="262.5" height="625" rx="31.5" fill="rgba(255,255,255,0.16)"/>
-  <rect x="368.75" y="443.75" width="262.5" height="625" rx="31.5" fill="url(#glass)"/>
-  <rect x="416" y="362.5" width="168" height="93.43749999999999" rx="4" fill="rgba(0,0,0,0.34)"/>
-  <rect x="408.125" y="706.25" width="183.75" height="212.50000000000003" rx="3" fill="rgba(255,255,255,0.86)"/>
-  <text x="500" y="787.5" font-family="Archivo, Arial, sans-serif" font-size="44.625" font-weight="700" fill="#1a1a1a" text-anchor="middle">AURA</text>
-  <text x="500" y="856.25" font-family="Archivo, Arial, sans-serif" font-size="21" fill="#666" text-anchor="middle" letter-spacing="0.5">RENEWAL SERUM</text>
+  <rect width="1000" height="1250" fill="url(#light)"/>
+  <!-- soft ground shadow -->
+  <ellipse cx="500" cy="1094.5" rx="202.8" ry="41.6" fill="rgba(0,0,0,0.34)" filter="url(#soft)"/>
+  <!-- body -->
+  <rect x="370" y="428.5" width="260" height="650" rx="26" fill="rgba(255,255,255,0.14)"/>
+  <rect x="370" y="428.5" width="260" height="650" rx="26" fill="url(#glass)"/>
+  <!-- highlight streak -->
+  <rect x="411.6" y="467.5" width="26" height="520" rx="13" fill="rgba(255,255,255,0.3)"/>
+  <!-- cap -->
+  <rect x="411.6" y="337.5" width="176.8" height="100.10000000000002" rx="5" fill="rgba(0,0,0,0.42)"/>
+  <rect x="411.6" y="337.5" width="176.8" height="36.400000000000006" rx="5" fill="rgba(255,255,255,0.12)"/>
+  <!-- label -->
+  <rect x="403.8" y="688.5" width="192.4" height="208" rx="3" fill="rgba(252,250,246,0.92)"/>
+  <text x="500" y="773" font-family="Archivo, Arial, sans-serif" font-size="44.2" font-weight="700" letter-spacing="0.5" fill="#1a1a1a" text-anchor="middle">AURA</text>
+  <text x="500" y="844.5" font-family="Archivo, Arial, sans-serif" font-size="18.72" fill="#777" text-anchor="middle" letter-spacing="1">RENEWAL SERUM</text>
   <rect width="1000" height="1250" fill="url(#vig)"/>
+  <rect width="1000" height="1250" filter="url(#grain)"/>
 </svg>

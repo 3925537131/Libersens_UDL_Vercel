@@ -3,6 +3,7 @@ import { CartProvider } from "@/components/CartProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import Cursor from "@/components/Cursor";
 
 export const metadata = {
   title: "Libersens — Free your senses",
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <CartProvider>
+          <Cursor />
           <Header />
           <main>{children}</main>
           <Footer />

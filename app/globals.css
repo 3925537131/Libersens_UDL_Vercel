@@ -102,8 +102,8 @@ ul {
 /* section label rows: a hairline rule, then a small uppercase label */
 .section-head {
   border-top: 1px solid var(--black);
-  padding: 16px 0 56px;
-  margin-top: 90px;
+  padding: 18px 0 clamp(40px, 5vw, 80px);
+  margin-top: clamp(80px, 11vw, 180px);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -448,16 +448,16 @@ ul {
    Statement — studio name + big rotating animated line (UDL signature)
    ========================================================================== */
 .statement {
-  padding: clamp(60px, 9vw, 150px) 0 clamp(70px, 12vw, 180px);
+  padding: clamp(80px, 13vw, 230px) 0 clamp(90px, 15vw, 250px);
 }
 
 .statement-name {
   display: inline-block;
-  font-size: clamp(40px, 6.6vw, 124px);
-  font-weight: 500;
+  font-size: clamp(44px, 7vw, 140px);
+  font-weight: 400;
   line-height: 1;
-  letter-spacing: -0.03em;
-  margin-bottom: clamp(20px, 3vw, 56px);
+  letter-spacing: -0.035em;
+  margin-bottom: clamp(24px, 3.4vw, 64px);
 }
 
 .statement-name .reg {
@@ -468,10 +468,10 @@ ul {
 
 .rotator {
   position: relative;
-  font-size: clamp(34px, 6vw, 112px);
-  font-weight: 500;
-  line-height: 1.02;
-  letter-spacing: -0.025em;
+  font-size: clamp(36px, 6.4vw, 124px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
   min-height: 1.05em;
 }
 
@@ -519,10 +519,14 @@ ul {
 
 .work-item {
   display: block;
+}
+
+/* grid spans live on the cell wrapper (Reveal div) */
+.work-grid > .cell {
   grid-column: span 2; /* default = 3-up */
 }
 
-.work-item.large {
+.work-grid > .cell.large {
   grid-column: span 3; /* 2-up */
 }
 
@@ -541,11 +545,37 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.9s var(--ease);
+  transition: transform 1.1s var(--ease);
 }
 
 .work-item:hover .media img {
-  transform: scale(1.04);
+  transform: scale(1.05);
+}
+
+/* "view" affordance on hover */
+.work-item .media::after {
+  content: "View →";
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  background: var(--white);
+  color: var(--black);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 9px 15px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  pointer-events: none;
+}
+
+.work-item:hover .media::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .work-caption {
@@ -979,6 +1009,66 @@ ul {
 }
 
 /* ==========================================================================
+   Custom cursor follower (fine-pointer devices only)
+   ========================================================================== */
+.cursor-follow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.25s var(--ease), height 0.25s var(--ease),
+    background 0.25s var(--ease), opacity 0.3s;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor-follow.visible {
+  opacity: 1;
+}
+
+.cursor-follow.hovering {
+  width: 70px;
+  height: 70px;
+  background: var(--white);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-follow {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Back-to-top bar (full-width, above big footer links)
+   ========================================================================== */
+.btt-bar {
+  border-top: 1px solid var(--black);
+  text-align: center;
+}
+
+.btt-bar button {
+  padding: 22px 0;
+  width: 100%;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background 0.4s var(--ease), color 0.3s;
+}
+
+.btt-bar button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* ==========================================================================
    Reveal on scroll
    ========================================================================== */
 .reveal {
@@ -1208,10 +1298,8 @@ ul {
    Responsive
    ========================================================================== */
 @media (max-width: 1100px) {
-  .work-item.large {
-    grid-column: span 3;
-  }
-  .work-item {
+  .work-grid > .cell,
+  .work-grid > .cell.large {
     grid-column: span 3;
   }
 }
@@ -1229,8 +1317,8 @@ ul {
   .work-grid {
     grid-template-columns: 1fr;
   }
-  .work-item,
-  .work-item.large {
+  .work-grid > .cell,
+  .work-grid > .cell.large {
     grid-column: span 1;
   }
   .journal-grid {

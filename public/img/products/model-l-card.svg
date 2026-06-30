@@ -1,24 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23252b"/><stop offset="1" stop-color="#34373f"/></linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(255,255,255,0.05)"/><stop offset="0.5" stop-color="rgba(255,255,255,0.5)"/><stop offset="1" stop-color="rgba(0,0,0,0.25)"/></linearGradient>
-    <radialGradient id="vig" cx="0.5" cy="0.44" r="0.72">
-      <stop offset="0.5" stop-color="rgba(0,0,0,0)"/>
-      <stop offset="1" stop-color="rgba(0,0,0,0.34)"/>
+    <linearGradient id="bg" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#1d1f24"/><stop offset="1" stop-color="#3a3d45"/></linearGradient>
+    
+    <radialGradient id="light" cx="0.5" cy="0.32" r="0.85">
+      <stop offset="0" stop-color="rgba(255,255,255,0.16)"/>
+      <stop offset="0.55" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.46" r="0.78">
+      <stop offset="0.46" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.4)"/>
     </radialGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="rgba(255,255,255,0.10)"/>
-      <stop offset="0.5" stop-color="rgba(255,255,255,0.40)"/>
-      <stop offset="1" stop-color="rgba(0,0,0,0.16)"/>
+      <stop offset="0" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="0.22" stop-color="rgba(255,255,255,0.42)"/>
+      <stop offset="0.5" stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="0.8" stop-color="rgba(0,0,0,0.06)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.22)"/>
     </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,0.04)"/>
+      <stop offset="0.42" stop-color="rgba(255,255,255,0.62)"/>
+      <stop offset="0.62" stop-color="rgba(255,255,255,0.2)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.34)"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" seed="5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
   </defs>
   <rect width="1400" height="1000" fill="url(#bg)"/>
-  <circle cx="700" cy="500" r="340" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-  <g transform="rotate(22 700 500)">
-    <rect x="687" y="240" width="26" height="400" rx="13" fill="url(#m)"/>
-    <rect x="683" y="620" width="34" height="16" rx="5" fill="rgba(255,255,255,0.55)"/>
-    <rect x="670" y="670" width="60" height="11" rx="5" fill="rgba(255,255,255,0.88)"/>
-    <rect x="666" y="735" width="68" height="3" fill="rgba(255,255,255,0.6)"/>
+  <rect width="1400" height="1000" fill="url(#light)"/>
+  <circle cx="700" cy="500" r="360" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <ellipse cx="730" cy="780" rx="160" ry="30" fill="rgba(0,0,0,0.34)" filter="url(#soft)"/>
+  <g transform="rotate(24 700 500)">
+    <!-- handle -->
+    <rect x="688" y="220" width="24" height="420" rx="12" fill="url(#metal)"/>
+    <rect x="697" y="240" width="3" height="380" rx="1.5" fill="rgba(255,255,255,0.5)"/>
+    <!-- knurling -->
+    <rect x="688" y="400" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="406" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="412" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="418" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="424" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="430" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="436" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="442" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="448" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/><rect x="688" y="454" width="24" height="1.4" fill="rgba(0,0,0,0.18)"/>
+    <!-- head -->
+    <rect x="682" y="620" width="36" height="15" rx="5" fill="rgba(255,255,255,0.5)"/>
+    <rect x="668" y="670" width="64" height="11" rx="5" fill="rgba(255,255,255,0.9)"/>
+    <rect x="664" y="735" width="72" height="2.5" fill="rgba(255,255,255,0.65)"/>
   </g>
   <rect width="1400" height="1000" fill="url(#vig)"/>
+  <rect width="1400" height="1000" filter="url(#grain)"/>
 </svg>
