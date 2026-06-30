@@ -17,13 +17,17 @@ export default function ProductCard({ product, size = "small" }) {
         {product.featuredImage && (
           <img src={product.featuredImage} alt={product.title} />
         )}
-      </div>
-      <div className="work-caption">
-        <div>
-          <span className="title">{product.title}</span>
-          {product.subtitle && <span className="sub">{product.subtitle}</span>}
+        <div className="card-info">
+          <div className="row">
+            <div>
+              <span className="title">{product.title}</span>
+              {product.subtitle && (
+                <span className="sub">{product.subtitle}</span>
+              )}
+            </div>
+            <div className="price">{fmt(price)}</div>
+          </div>
         </div>
-        <div className="price">{fmt(price)}</div>
       </div>
     </Link>
   );

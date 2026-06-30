@@ -57,9 +57,11 @@ export default async function Home() {
               <Link key={j.handle} href="/journal" className="journal-item">
                 <div className="media">
                   <img src={j.image} alt={j.headline} />
+                  <div className="card-info">
+                    <div className="date">{j.date}</div>
+                    <div className="headline">{j.headline}</div>
+                  </div>
                 </div>
-                <div className="date">{j.date}</div>
-                <div className="headline">{j.headline}</div>
               </Link>
             ))}
           </div>

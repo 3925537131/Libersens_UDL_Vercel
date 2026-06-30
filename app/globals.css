@@ -110,16 +110,17 @@ ul {
 }
 
 .section-head h2 {
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-size: clamp(22px, 3vw, 52px);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1;
 }
 
 .section-head .count {
-  font-size: 12px;
+  font-size: clamp(12px, 1vw, 15px);
   color: var(--grey);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
 }
 
 /* underlined "more" text link (UDL style) */
@@ -552,55 +553,64 @@ ul {
   transform: scale(1.05);
 }
 
-/* "view" affordance on hover */
-.work-item .media::after {
-  content: "View →";
+/* hover-reveal caption overlaid on the image */
+.card-info {
   position: absolute;
-  left: 16px;
-  bottom: 16px;
+  inset: 0;
   z-index: 2;
-  background: var(--white);
-  color: var(--black);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 9px 15px;
-  border-radius: 999px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(18px, 2vw, 36px);
+  color: var(--white);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.15) 42%,
+    rgba(0, 0, 0, 0) 70%
+  );
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  transition: opacity 0.45s var(--ease);
   pointer-events: none;
 }
 
-.work-item:hover .media::after {
+.work-item:hover .card-info,
+.journal-item:hover .card-info {
   opacity: 1;
+}
+
+.card-info > * {
+  transform: translateY(14px);
+  transition: transform 0.5s var(--ease);
+}
+
+.work-item:hover .card-info > *,
+.journal-item:hover .card-info > * {
   transform: translateY(0);
 }
 
-.work-caption {
+.card-info .row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding-top: 16px;
+  align-items: flex-end;
   gap: 16px;
 }
 
-.work-caption .title {
-  font-size: clamp(16px, 1.35vw, 22px);
+.card-info .title {
+  font-size: clamp(18px, 1.7vw, 30px);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
-.work-caption .sub {
+.card-info .sub {
   display: block;
-  font-size: 13px;
-  color: var(--grey);
-  margin-top: 3px;
+  font-size: clamp(13px, 1vw, 16px);
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 4px;
 }
 
-.work-caption .price {
-  font-size: 15px;
+.card-info .price {
+  font-size: clamp(15px, 1.2vw, 21px);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -687,46 +697,60 @@ ul {
    Journal — CSS-columns masonry (UDL news grid)
    ========================================================================== */
 .journal-grid {
-  column-count: 3;
-  column-gap: clamp(20px, 2.4vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 3vw, 72px) clamp(20px, 2.4vw, 48px);
+  align-items: start;
+}
+
+/* alternate the right column downward (UDL-style stagger) */
+.journal-item:nth-child(even) {
+  margin-top: clamp(48px, 9vw, 180px);
 }
 
 .journal-item {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: clamp(30px, 3.4vw, 60px);
-  break-inside: avoid;
+  display: block;
 }
 
 .journal-item .media {
+  position: relative;
   overflow: hidden;
   background: var(--grey-bg);
+  aspect-ratio: 4 / 3;
+}
+
+.journal-item:nth-child(4n + 2) .media {
+  aspect-ratio: 3 / 4;
+}
+.journal-item:nth-child(4n + 3) .media {
+  aspect-ratio: 1 / 1;
+}
+.journal-item:nth-child(4n + 4) .media {
+  aspect-ratio: 5 / 4;
 }
 
 .journal-item .media img {
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.9s var(--ease);
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.1s var(--ease);
 }
 
 .journal-item:hover .media img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 .journal-item .date {
-  margin-top: 16px;
-  font-size: 13px;
+  font-size: clamp(13px, 1vw, 16px);
   font-weight: 600;
   letter-spacing: 0.02em;
 }
 
 .journal-item .headline {
   margin-top: 4px;
-  font-size: 15px;
-  line-height: 1.4;
+  font-size: clamp(16px, 1.4vw, 26px);
+  line-height: 1.3;
   font-weight: 500;
-  color: #1a1a1a;
 }
 
 /* ==========================================================================
@@ -755,49 +779,50 @@ ul {
 .footer {
   background: var(--black);
   color: var(--white);
-  padding: 80px 0 40px;
+  padding: clamp(70px, 9vw, 140px) 0 48px;
 }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 60px;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: clamp(50px, 6vw, 90px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .clocks {
   display: flex;
-  gap: 44px;
+  gap: clamp(32px, 4vw, 60px);
 }
 
 .clock .label {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--grey);
 }
 
 .clock .time {
-  font-size: 30px;
-  font-weight: 500;
+  font-size: clamp(30px, 3vw, 54px);
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
-  margin-top: 6px;
-  line-height: 1.13;
+  margin-top: 8px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 .footer-col h4 {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--grey);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .footer-col p,
 .footer-col a {
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: clamp(16px, 1.25vw, 21px);
+  line-height: 1.6;
   display: block;
 }
 
@@ -809,28 +834,28 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 36px;
+  padding-top: 40px;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .footer-logo {
-  font-size: clamp(60px, 16vw, 290px);
-  font-weight: 600;
-  line-height: 0.8;
-  letter-spacing: -0.04em;
+  font-size: clamp(72px, 17vw, 320px);
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: -0.045em;
 }
 
 .footer-meta {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--grey);
   display: flex;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
 .back-to-top {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1321,9 +1346,6 @@ ul {
   .work-grid > .cell.large {
     grid-column: span 1;
   }
-  .journal-grid {
-    column-count: 2;
-  }
   .shop-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1344,14 +1366,36 @@ ul {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .journal-grid {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
+  .journal-item:nth-child(even) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
   .shop-grid {
     grid-template-columns: 1fr;
   }
   .clocks {
     gap: 24px;
+  }
+}
+
+/* touch devices have no hover — keep captions visible */
+@media (hover: none), (pointer: coarse) {
+  .card-info {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.15) 42%,
+      rgba(0, 0, 0, 0) 70%
+    );
+  }
+  .card-info > * {
+    transform: none;
   }
 }

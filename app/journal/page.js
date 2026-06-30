@@ -34,9 +34,11 @@ export default function Journal() {
               <Link key={j.handle + i} href="/journal" className="journal-item">
                 <div className="media">
                   <img src={j.image} alt={j.headline} />
+                  <div className="card-info">
+                    <div className="date">{j.date}</div>
+                    <div className="headline">{j.headline}</div>
+                  </div>
                 </div>
-                <div className="date">{j.date}</div>
-                <div className="headline">{j.headline}</div>
               </Link>
             ))}
           </div>
