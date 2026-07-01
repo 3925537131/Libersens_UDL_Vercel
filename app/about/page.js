@@ -11,7 +11,7 @@ export default function About() {
       {/* full-width banner */}
       <div className="about-top block">
         <div className="about-banner">
-          <img src="/img/about.svg" alt="Libersens studio" />
+          <img src="/img/header.jpg" alt="Libersens studio" />
         </div>
       </div>
 
