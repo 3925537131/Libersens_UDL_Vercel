@@ -22,8 +22,8 @@
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --font-sans: "Archivo", "Helvetica Neue", "Helvetica", "PingFang SC", Arial,
-    sans-serif;
+  --font-sans: "Hanken Grotesk", "Helvetica Neue", "Helvetica", "PingFang SC",
+    Arial, sans-serif;
 }
 
 * {
