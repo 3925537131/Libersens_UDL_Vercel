@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20222a"/>
+      <stop offset="0.5" stop-color="#4a4038"/>
+      <stop offset="1" stop-color="#b98a63"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.62" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="rgba(255,240,225,0.28)"/>
+      <stop offset="1" stop-color="rgba(255,240,225,0)"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="rgba(255,255,255,0.05)"/>
+      <stop offset="0.45" stop-color="rgba(255,255,255,0.6)"/>
+      <stop offset="1" stop-color="rgba(0,0,0,0.3)"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" seed="11"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <circle cx="1152" cy="453.59999999999997" r="432" fill="rgba(255,255,255,0.045)"/>
+  <circle cx="1152" cy="453.59999999999997" r="280.8" fill="rgba(255,255,255,0.05)"/>
+  <!-- soft shadows -->
+  <ellipse cx="768" cy="885.5999999999999" rx="237.6" ry="37.800000000000004" fill="rgba(0,0,0,0.4)" filter="url(#soft)"/>
+  <ellipse cx="1305.6000000000001" cy="907.1999999999999" rx="172.8" ry="32.4" fill="rgba(0,0,0,0.35)" filter="url(#soft)"/>
+  <!-- abstract bottle silhouette -->
+  <g>
+    <rect x="1209.6" y="367.20000000000005" width="96" height="518.4" rx="18" fill="rgba(255,255,255,0.14)"/>
+    <rect x="1209.6" y="367.20000000000005" width="96" height="518.4" rx="18" fill="url(#metal)" opacity="0.5"/>
+    <rect x="1224.96" y="302.40000000000003" width="65.28" height="75.60000000000001" rx="6" fill="rgba(0,0,0,0.35)"/>
+  </g>
+  <!-- razor silhouette, angled -->
+  <g transform="rotate(20 729.6 540)">
+    <rect x="720" y="324" width="20" height="432" rx="10" fill="url(#metal)"/>
+    <rect x="695.04" y="734.4000000000001" width="48" height="12" rx="6" fill="rgba(255,255,255,0.8)"/>
+  </g>
+  <rect width="1920" height="1080" filter="url(#grain)"/>
+</svg>
